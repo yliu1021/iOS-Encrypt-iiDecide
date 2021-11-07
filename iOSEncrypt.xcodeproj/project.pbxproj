@@ -11,6 +11,9 @@
 		E2520E7A27339612005F4677 /* iOSEncrypt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2520E6F27339612005F4677 /* iOSEncrypt.framework */; };
 		E2520E7F27339612005F4677 /* iOSEncryptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2520E7E27339612005F4677 /* iOSEncryptTests.swift */; };
 		E2520E8027339612005F4677 /* iOSEncrypt.h in Headers */ = {isa = PBXBuildFile; fileRef = E2520E7227339612005F4677 /* iOSEncrypt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E2520E8A2733967B005F4677 /* iOSEncrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2520E892733967B005F4677 /* iOSEncrypt.swift */; };
+		E2520E8C2733A6FB005F4677 /* ChatRoomKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2520E8B2733A6FB005F4677 /* ChatRoomKeys.swift */; };
+		E2520E9027346A52005F4677 /* AES.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2520E8F27346A52005F4677 /* AES.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,9 @@
 		E2520E7327339612005F4677 /* iOSEncrypt.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = iOSEncrypt.docc; sourceTree = "<group>"; };
 		E2520E7927339612005F4677 /* iOSEncryptTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSEncryptTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2520E7E27339612005F4677 /* iOSEncryptTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSEncryptTests.swift; sourceTree = "<group>"; };
+		E2520E892733967B005F4677 /* iOSEncrypt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSEncrypt.swift; sourceTree = "<group>"; };
+		E2520E8B2733A6FB005F4677 /* ChatRoomKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomKeys.swift; sourceTree = "<group>"; };
+		E2520E8F27346A52005F4677 /* AES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,9 @@
 			children = (
 				E2520E7227339612005F4677 /* iOSEncrypt.h */,
 				E2520E7327339612005F4677 /* iOSEncrypt.docc */,
+				E2520E892733967B005F4677 /* iOSEncrypt.swift */,
+				E2520E8B2733A6FB005F4677 /* ChatRoomKeys.swift */,
+				E2520E8F27346A52005F4677 /* AES.swift */,
 			);
 			path = iOSEncrypt;
 			sourceTree = "<group>";
@@ -107,6 +116,8 @@
 				E2520E6B27339612005F4677 /* Sources */,
 				E2520E6C27339612005F4677 /* Frameworks */,
 				E2520E6D27339612005F4677 /* Resources */,
+				E2520E8E27346681005F4677 /* SwiftFormat */,
+				E2520E8D27345EFC005F4677 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -189,12 +200,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E2520E8D27345EFC005F4677 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint autocorrect && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		E2520E8E27346681005F4677 /* SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftFormat;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swift-format >/dev/null; then\n    swift-format -m format -i -r ${PROJECT_DIR}\nelse\n    echo \"warning: swift-format not installed\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E2520E6B27339612005F4677 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E2520E7427339612005F4677 /* iOSEncrypt.docc in Sources */,
+				E2520E9027346A52005F4677 /* AES.swift in Sources */,
+				E2520E8C2733A6FB005F4677 /* ChatRoomKeys.swift in Sources */,
+				E2520E8A2733967B005F4677 /* iOSEncrypt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +451,7 @@
 		E2520E8727339612005F4677 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W862DC2K44;
@@ -419,6 +473,7 @@
 		E2520E8827339612005F4677 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W862DC2K44;
